@@ -1,46 +1,22 @@
-@import "../const.scss";
+@import '../const.scss';
 
-/**
- 数据展示，用法如下：
- <div class="data">
-  <div class="data-header">
-    <div class="sub expand">
-      <!-- 通常展示搜索表单 -->
-      <el-form></el-form>
-    </div>
-    <div class="sub">
-      <!-- 通常展示子菜单导航、操作按钮 -->
-      <el-button>新建</el-button>
-      <el-button>导出</el-button>
-    </div>
-  </div>
-  <div class="data-body">
-    <el-table></el-table>
-  </div>
-  <div class="data-header">
-    <div class="sub expand">
-      <el-button>全选</el-button>
-      <el-button>反选</el-button>
-    </div>
-    <div class="sub">
-      <!-- 通常展示分页 -->
-      <el-pagination />
-    </div>
-  </div>
- </div>
- */
+// 数据展示
 .data {
+  display: flex;
+  flex-direction: column;
+  // height: 100%;
   position: relative;
 
   // 表头和表底
   &-header,
   &-footer {
-    align-items: flex-start;
+    align-items: center;
+    flex-shrink: 0;
     display: flex;
     justify-content: flex-end;
 
     & > .sub {
-      align-items: flex-start;
+      align-items: center;
       display: flex;
 
       &:last-of-type {
@@ -54,15 +30,11 @@
   }
 
   &-header {
-    position: relative;
+    margin-bottom: 0;
 
     /deep/.el-form-item {
       margin-bottom: $void;
       margin-right: $void;
-
-      &:last-of-type {
-        margin-right: 0;
-      }
     }
   }
 
@@ -71,6 +43,8 @@
   }
 
   &-body {
+    flex: 1;
+    overflow: hidden;
     position: relative;
   }
 }

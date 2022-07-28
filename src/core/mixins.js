@@ -1,122 +1,170 @@
-import { Message } from "element-ui";
+// 混入
+import { Message } from 'element-ui';
+import { mapActions, mapState } from 'vuex'
 import appConfig from '@/config/app';
-import * as grant from "@/core/grant";
+import { SignLogout } from '@/api/sign';
+import * as appUtil from '@/utils/app';
+import store from '@/store'
+import { hasPermission, setUserAuthResource } from '@/utils/auth';
 
-// 全局混入
-// 我们可以把全局混入当做一个"基类"，所有页面和组件可以使用其中的成员属性。
-// 这样可以避免我们在页面中重复引用某些定义。
-// 当然，某些属性我们也可以放在 ./src/App.vue 里，然后使用 this.$root.* 访问。
+const mapStateEnums = {
+}
+
+Object.keys(store.state.enumStore.enums).forEach((key) => {
+  mapStateEnums[key] = state => state.enumStore.enums[key]
+})
+
+
 export default {
   data() {
     return {
       appConfig,
-      // 全局配置，全局配置在 ./src/main.js 中引入，请使用 this.$config.* 访问
-
-      // 当前页面的完整路径
-      fullPath: this.$route ? this.$route.fullPath : "",
-
-      // 当前页面的路由 Meta
-      routerMeta: this.$route ? this.$route.meta : {},
+      user: appUtil.getUser(), // 已登录用户
+      isMounted: false,
     };
   },
   computed: {
-    user() {
-      return this.$store.state.user;
-    }
+    ...mapState({
+      ...mapStateEnums,
+    }),
   },
   methods: {
-    // 注销登录操作
-    // 通常，我们可能可以从多个位置执行退出登录
+    ...mapActions({
+      fetchEnums_Raw: 'fetchEnums',
+    }),
+
+    async fetchEnums(...enums) {
+      return await this.fetchEnums_Raw(enums)
+    },
+
+
+    // 校验是否具有权限
+    hasPermission,
+
+    // 回到主页
+    handleToHome() {
+      if (this.$route.name === 'home') return;
+      this.$router.push('/');
+    },
+
+    // 退出登录
     async handleLogout() {
       try {
-        await this.msg({
-          message: "确定退出当前登录账户？",
-          mode: "confirm"
+        await this.$confirm('确定退出当前登录？', '操作提示', {
+          type: 'warning'
         });
 
-        // 清除本地数据
-        this.$store.dispatch("removeUser");
-        grant.clearAuth();
+        // 调用接口通知后端退出
+        try {
+          SignLogout();
+        } catch (error) {
+          console.error(error);
+        }
 
-        // 触发后端接口
-        // 略···
+        // 清除 mixins 中的 user 变量
+        this.user = null;
 
-        // 打印消息
+        // 更新状态
+        this.$store.dispatch('removeUserByAction');
+
+        // 清空动态路由
+        setUserAuthResource('');
+
+        // 清除缓存
+        appUtil.clearCache();
+
         this.msg({
-          message: "您已退出登录",
-          type: "success"
+          type: 'success',
+          content: '已退出登录'
         });
 
-        // 转到登录页
-        // this.$router.replace('/');
+        // 转到主页
+        window.location = '/login';
       } catch (error) {
-        if (error === "cancel") return;
-
+        if (error === 'cancel') return;
         this.msg({
-          message: error,
-          type: "error"
+          type: 'error',
+          content: error
         });
       }
     },
 
     /**
-     * 弹出消息
-     * 官方文档<https://element.eleme.cn/2.13/#/zh-CN/component/message>
-     * @description 统一弹出消息
-     * @param {Object} options
+     * 消息提示封装
+     * @description `options` 为通用配置，适合大部分场景，`defaults` 为详细配置，参考对应 mode 的配置项
+     * @param {Object} options 通用配置
+     * @param {Object} defaults mode 对应的细节配置
      */
-    msg(options = {}) {
-      // 参数继承
-      options = {
-        ...{
-          mode: "message", // 模式，message 浮动消息 | confirm 确认弹窗 | alert 提示消息
-          type: "info", // 消息类型 info | success | error | warning
-          title: "操作提示", // alert 或 confirm 时展示的标题
-          message: "", // 消息
-          duration: 1500, // 默认显示 1.5 秒，仅 message 有效
-          dangerouslyUseHTMLString: false
-        },
+    async msg(options = {}, defaults = {}) {
+      const _options = {
+        mode: 'message', // 消息类型，message | alert | confirm | notification
+        type: 'info', // 消息类型，success | warning | info | error
+        content: '', // 消息内容
+        title: null, // 标题内容
+        duration: 1000 * 3, // 显示停留时间，毫秒
+        offset: 20, // Message 消息距离窗口顶部偏移
+        rich: false, // 是否把内容作为 HTML 展示
+        position: 'top-right', // notification 类型消息的显示位置 top-right | top-left | bottom-right | bottom-left
         ...options
       };
 
-      if (!options.message) return;
-
-      // 控制台打印
-      let consoleType = "log";
-
-      if (options.type === "error") {
-        consoleType = "error";
-      } else if (options.type === "warning") {
-        consoleType = "warn";
-      } else {
-        consoleType = "log";
+      // 特殊信息需要打印到控制台
+      if (['warning', 'error'].includes(_options.type)) {
+        switch (_options.type) {
+          case 'error':
+            console.error(_options.content);
+            break;
+          case 'warning':
+          default:
+            console.trace(_options.content);
+            break;
+        }
       }
 
-      // 只打印 Error 级别的消息
-      if (consoleType === "error") {
-        console[consoleType](options.message);
-      }
-
-      // alert 弹窗
-      if (options.mode === "alert") {
-        return this.$alert(options.message, options.title, {
-          confirmButtonText: "确定",
-          ...options
+      // Alert
+      if (_options.mode === 'alert') {
+        return this.$alert(_options.content, _options.title, {
+          type: _options.type,
+          dangerouslyUseHTMLString: _options.rich,
+          ...defaults
         });
       }
 
-      // confirm 弹窗
-      if (options.mode === "confirm") {
-        return this.$confirm(options.message, options.title, {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          ...options
+      // Confirm
+      if (_options.mode === 'confirm') {
+        return this.$confirm(_options.content, _options.title, {
+          type: _options.type,
+          dangerouslyUseHTMLString: _options.rich,
+          ...defaults
         });
       }
 
-      // 弹出消息
+      // Notification 通知
+      if (_options.mode === 'notification') {
+        return this.$notify({
+          type: _options.type,
+          title: _options.title,
+          message: _options.content,
+          duration: _options.duration,
+          offset: _options.offset,
+          dangerouslyUseHTMLString: _options.rich,
+          ...defaults
+        });
+      }
+
+      // Message 消息提示
       Message.closeAll();
-      Message(options);
+      this.$message({
+        type: _options.type,
+        message: _options.content,
+        dangerouslyUseHTMLString: _options.rich,
+        duration: _options.duration,
+        offset: _options.offset,
+        ...defaults
+      });
     }
+  },
+  mounted() {
+    this.isMounted = true;
   }
 };

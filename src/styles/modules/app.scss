@@ -1,9 +1,8 @@
-@import "../const.scss";
+@import '../const.scss';
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -15,80 +14,176 @@ body {
   color: $colorText;
   font-size: 1rem;
   font-family: $fontFamily;
-  line-height: 1.2rem;
-}
-
-// 布局容器
-.contanier {
-  margin: 0 auto;
-  max-width: 1200px;
-  position: relative;
-}
-
-// 文本溢出
-.overflow-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-// 加载遮罩
-.spin {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-}
-
-// flex 布局展开
-.expanded {
-  flex: 1;
+  line-height: 28px;
+  -webkit-font-smoothing: antialiased;
 }
 
 // 超链接文本
 .links {
-  color: #5175ff;
+  color: $colorPrimaryLight;
 
   &:hover {
-    color: $colorPrimary;
     text-shadow: 0 1px 3px fade-out($colorPrimaryLight, 0.8);
   }
 }
 
-// 表单组
-.form-input-group {
-  align-items: center;
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+.tangram-suggestion-main {
+  z-index: 999;
+}
+
+/*
+ * 公共样式
+ */
+.flex_1 {
+  flex: 1;
+}
+
+.dis_flex {
   display: flex;
 }
 
-// 表单提示
-.form-tips {
-  color: $colorTextLight;
-  font-size: 0.8rem;
-  padding: 8px;
-  line-height: 20px;
+.flex_dir_col {
+  flex-direction: column;
 }
 
-// 弹窗表单
-.modal-form {
-  // 默认 label-width 为 120
-  padding: 40px 40px 20px;
-  position: relative;
-
-  &-options {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
+.ju_con_cen {
+  justify-content: center;
 }
 
-// 弹窗图片查看
-.modal-image {
-  position: relative;
+.ju_con_end {
+  justify-content: flex-end;
+}
 
-  img {
-    max-width: 100%;
-  }
+.ali_it_cen {
+  align-items: center;
+}
+
+.w_80 {
+  width: 80px;
+}
+
+.min_w_80 {
+  min-width: 80px;
+}
+
+.w_120 {
+  width: 120px;
+}
+
+.w_150 {
+  width: 150px;
+}
+
+.w_200 {
+  width: 200px;
+}
+
+.w_200_ipt {
+  width: 200px !important;
+}
+
+.w_240 {
+  width: 240px;
+}
+
+.w_400 {
+  width: 400px;
+}
+
+.w_percent_100 {
+  width: 100%;
+}
+
+.h_1 {
+  height: 1px;
+}
+
+.h_120 {
+  height: 120px;
+}
+
+.m_l_neg_1 {
+  margin-left: -1px;
+}
+
+.m_l_0_ipt {
+  margin-left: 0px !important;
+}
+
+.m_l_10 {
+  margin-left: 10px;
+}
+
+.m_l_64 {
+  margin-left: 64px;
+}
+
+.m_t_neg_4 {
+  margin-top: -4px;
+}
+
+.m_t_6 {
+  margin-top: 6px;
+}
+
+.m_t_6_ipt {
+  margin-top: 6px !important;
+}
+
+.m_t_10 {
+  margin-top: 10px;
+}
+
+.m_t_20 {
+  margin-top: 20px;
+}
+
+.m_r_10 {
+  margin-right: 10px;
+}
+
+.m_0_10 {
+  margin: 0 10px;
+}
+
+.font_16 {
+  font-size: 16px;
+}
+
+.font_bold {
+  font-weight: bold;
+}
+
+.col_FF5454 {
+  color: #ff5454;
+}
+
+.bg_col_ddd {
+  background: #ddd;
+}
+
+.bor_b_sol_1_ddd {
+  border-bottom: solid 1px ddd;
+}
+
+.bor_dashed_1_ddd {
+  border: dashed 1px #ddd;
+}
+
+.bor_solid_1_blue {
+  border: solid 1px #09f;
+}
+
+.bor_rad_4 {
+  border-radius: 4px;
+}
+
+.cur_pot {
+  cursor: pointer;
 }

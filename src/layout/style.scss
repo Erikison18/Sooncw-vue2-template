@@ -1,0 +1,308 @@
+@import '../styles/const.scss';
+
+.main {
+  align-items: stretch;
+  background-color: $bg;
+  display: flex;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+
+  // 遮罩，禁止侧边栏收起时展示
+  .mask {
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+    position: fixed;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 2;
+  }
+
+  // 侧边栏
+  .sidebar {
+    background-color: white;
+    border-right: 1px $colorBorder solid;
+    flex-shrink: 0;
+    position: relative;
+    width: 200px;
+    z-index: 3;
+
+    .brand {
+      cursor: pointer;
+      align-items: center;
+      background-color: white;
+      border-bottom: 1px $colorBorder solid;
+      color: $colorText;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      text-decoration: none;
+
+      i {
+        background-image: url('/images/logo-color-graph.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+        height: 24px;
+        width: 24px;
+      }
+
+      span {
+        color: $colorPrimary;
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        height: 32px;
+        line-height: 32px;
+        margin-left: $void;
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    .nav-wrap {
+      top: 50px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: scroll;
+      position: absolute;
+    }
+  }
+
+  // 内容区域
+  .content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+
+  // 头部
+  .header {
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px $colorBorder solid;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    z-index: 2;
+
+    // 布局
+    & > .start,
+    & > .end {
+      align-items: center;
+      display: flex;
+      position: relative;
+    }
+
+    & > .start {
+      flex: 1;
+    }
+
+    .icon-side-toggle,
+    .icon-refer {
+      color: $colorText;
+      display: block;
+      font-size: 20px;
+      height: 24px;
+      line-height: 24px;
+      margin: 0 5px;
+      text-align: center;
+      width: 24px;
+    }
+
+    // 侧边卷展
+    .icon-side-toggle {
+      cursor: pointer;
+      display: none;
+    }
+
+    // 导航图标
+    .icon-refer {
+      color: $colorSecond;
+    }
+
+    // 页面标题
+    .title {
+      font-size: 14px;
+      line-height: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // 面包屑栏
+    .breadcrumb-wrap {
+      padding: 0 20px;
+
+      .el-breadcrumb {
+        font-size: 12px;
+      }
+    }
+
+    // 快捷操作
+    .options {
+      align-items: center;
+      display: flex;
+      position: relative;
+
+      // 操作图标
+      .handle {
+        cursor: pointer;
+        padding: $voidSmall;
+        margin-right: $voidLarge;
+
+        i {
+          display: block;
+          font-size: 1.2rem;
+          height: 24px;
+          line-height: 24px;
+          text-align: center;
+          transition: all 0.3s ease;
+          width: 24px;
+        }
+
+        &:hover i {
+          color: $colorPrimary;
+        }
+      }
+    }
+
+    // 用户信息
+    .user-base {
+      cursor: pointer;
+      align-items: center;
+      display: flex;
+
+      // 基础信息
+      .info {
+        cursor: default;
+        margin-left: 18px;
+
+        .base {
+          align-items: center;
+          display: flex;
+          font-size: 0.95rem;
+          font-weight: bold;
+          line-height: 20px;
+        }
+
+        .id {
+          color: $colorTextLight;
+          font-size: 0.8rem;
+          line-height: 18px;
+        }
+      }
+
+      // 头像
+      .avatar {
+        cursor: pointer !important;
+        display: block;
+        height: 32px;
+        position: relative;
+        width: 32px;
+
+        .inner {
+          align-items: center;
+          background-color: $colorPrimary;
+          background-image: linear-gradient(
+            to top right,
+            darken($colorPrimary, 10%) 0%,
+            $colorPrimary 100%
+          );
+          border-radius: 7px;
+          box-shadow: 0 0 0 4px $bg;
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        }
+
+        .kd-icon {
+          color: white;
+          font-size: 16px;
+          height: 32px;
+          line-height: 32px;
+          text-align: center;
+          text-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
+          width: 32px;
+        }
+      }
+
+      // 更多操作
+      .action-handle {
+        color: fade-out($colorTextLight, 0.5);
+        cursor: pointer;
+        display: block;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        width: 24px;
+      }
+    }
+  }
+
+  .body {
+    height: (calc(100vh - 88px));
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  // 隐藏面包屑
+  .breadcrumb-wrap {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  // 隐藏用户文本信息
+  .user-base .info {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .sidebar {
+    box-shadow: -16px 0 32px rgba(0, 0, 0, 0.3);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute !important;
+    transform: translateX(-290px);
+    transition: all 0.4s ease;
+    z-index: 99;
+  }
+
+  .icon-side-toggle {
+    display: block !important;
+  }
+
+  .side-toggled {
+    .mask {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .sidebar {
+      transform: translateX(0);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@import '../const.scss';
+
+// 弹窗优化
+.el-dialog {
+  overflow: hidden;
+}
+
+.el-dialog__header {
+  background-color: fade-out($colorBorder, 0.85);
+  border-bottom: 1px $colorBorder solid;
+  padding: $void !important;
+}
+
+.el-dialog__title {
+  display: block;
+  font-size: 1rem !important;
+  font-weight: bold;
+  height: 32px;
+  line-height: 32px !important;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.el-dialog__headerbtn {
+  height: 32px !important;
+  right: $void !important;
+  top: $void !important;
+  width: 32px !important;
+
+  .el-dialog__close {
+    color: $colorTextLight !important;
+    font-weight: bold;
+
+    &:hover {
+      color: $colorPrimary !important;
+    }
+  }
+}
+
+.el-dialog__body {
+  padding: 0 !important;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  max-height: (calc(100vh - 38vh));
+
+  &-body {
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+    position: relative;
+  }
+
+  &-options {
+    background-color: fade-out($colorBorder, 0.85);
+    align-items: center;
+    border-top: 1px $colorBorder solid;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: $void * 1.5;
+    position: relative;
+
+    button {
+      min-width: 80px;
+    }
+  }
+}

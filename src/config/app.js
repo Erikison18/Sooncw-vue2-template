@@ -25,7 +25,7 @@ export default {
   isPre: env === 'pre',
 
   // localStorage 缓存标识
-  cachePrefix: '__dingdang_bp_platform__',
+  cachePrefix: '_dingdang_bp_platform_',
 
   // 分页配置
   page: {

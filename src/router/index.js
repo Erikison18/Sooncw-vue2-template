@@ -11,9 +11,17 @@ export const routes_default = [
   // 默认情况下，页面会跳转到 { name: 'home' } 路由，
   // 如果为登录，则跳转到 { name: 'login' } 路由
   {
-    path: "/",
-    name: "Home",
-    component: () => import(/* webpackChunkName: "Home"*/ "_v/Home.vue")
+    path: '/',
+    name: 'home',
+    component: () => import(/* webpackChunkName:"routes" */ '@/layout/Main'),
+    children: [
+      // 需要包裹为子级，否则标签导航栏点击主页按钮时历史记录会被清空
+      {
+        path: '',
+        component: () =>
+          import(/* webpackChunkName:"routes" */ '@/views/home/Home')
+      }
+    ]
   },
 
   /**
