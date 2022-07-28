@@ -5,7 +5,7 @@
     <Layout class="margin-large" />
     <Flex class="margin-large" />
     <Auth class="margin-large" />
-    <Http class="margin-large" />
+    <!-- <Http class="margin-large" /> -->
     <Message class="margin-large" />
     <Colors class="margin-large" />
   </div>
@@ -18,7 +18,7 @@ export default {
     UI: () => import("./components/UI"),
     Layout: () => import("./components/Layout"),
     Auth: () => import("./components/Auth"),
-    Http: () => import("./components/Http"),
+    // Http: () => import("./components/Http"),
     Message: () => import("./components/Message"),
     Flex: () => import("./components/Flex"),
     Colors: () => import("./components/Colors")

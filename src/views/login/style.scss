@@ -1,0 +1,186 @@
+@import '../../styles/const.scss';
+
+.el-input--prefix .el-input__inner {
+  padding-left: 40px;
+}
+
+.el-input__prefix {
+  left: 0;
+  width: 40px;
+}
+
+.login-wrap {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow: auto;
+  position: absolute;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    background-image: url('/images/login-cover-gray.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    bottom: 0;
+    left: 30%;
+    height: 460px;
+    width: 578px;
+    z-index: 1;
+  }
+
+  &::after {
+    background-image: url('/images/login-bg.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
+
+  & > .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: (calc(100% - 120px));
+    padding: 60px;
+    position: relative;
+    z-index: 5;
+  }
+}
+
+// 封面
+.cover {
+  background-image: url('/images/login-cover.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  height: 420px;
+  left: 0;
+  top: 50%;
+  margin-top: -210px;
+  position: absolute;
+  width: 640px;
+  z-index: 3;
+}
+
+// 登录面板
+.form-box {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 440px;
+  z-index: 4;
+
+  .logo {
+    margin: 40px auto 0;
+
+    em,
+    span {
+      display: block;
+    }
+
+    em {
+      background-image: url('/images/logo-color-graph.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 48px;
+      margin: 0 auto;
+      width: 48px;
+    }
+
+    span {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
+
+  .form {
+    padding: 40px 80px 20px;
+
+    .verify-code {
+      align-items: center;
+      display: flex;
+      position: relative;
+
+      .image {
+        background-color: $colorBorder;
+        border-radius: 2px;
+        height: 32px;
+        overflow: hidden;
+        margin-left: 15px;
+        width: 160px;
+
+        img {
+          cursor: pointer;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .refresh {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 40px;
+        position: absolute;
+        right: -40px;
+        width: 40px;
+
+        .kd-icon {
+          align-items: center;
+          color: $colorTextLight;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          width: 40px;
+        }
+      }
+    }
+
+    .actions {
+      position: relative;
+
+      .reset-password {
+        font-size: 0.8rem;
+
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .submit {
+      background-image: linear-gradient(225deg, #29c4f7 0%, #529bfc 100%);
+      width: 100%;
+    }
+  }
+
+  .copyright {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    p {
+      color: $colorTextLight;
+      font-size: 0.8rem;
+    }
+  }
+}

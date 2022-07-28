@@ -1,5 +1,5 @@
 import { Message } from "element-ui";
-import HTTPConfig from "@/http/config";
+import appConfig from '@/config/app';
 import * as grant from "@/core/grant";
 
 // 全局混入
@@ -9,6 +9,7 @@ import * as grant from "@/core/grant";
 export default {
   data() {
     return {
+      appConfig,
       // 全局配置，全局配置在 ./src/main.js 中引入，请使用 this.$config.* 访问
 
       // 当前页面的完整路径
@@ -16,14 +17,6 @@ export default {
 
       // 当前页面的路由 Meta
       routerMeta: this.$route ? this.$route.meta : {},
-
-      // 上传地址
-      // 参考：https://element.eleme.cn/2.13/#/zh-CN/component/upload#attribute
-      uploadAction: HTTPConfig.api + "/upload",
-      uploadHeaders: {
-        platform: HTTPConfig.auth.platform,
-        Authorization: `Bearer ${grant.getAuthToken()}`
-      }
     };
   },
   computed: {

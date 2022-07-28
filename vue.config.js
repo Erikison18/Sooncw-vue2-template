@@ -68,7 +68,7 @@ module.exports = {
     // 资源引用别名定义
     config.resolve.alias
       .set('@', resolve('src'))
-      .set('_v', resolve('src/pages'))
+      .set('_v', resolve('src/views'))
       .set('_c', resolve('src/components'));
 
     return config;
