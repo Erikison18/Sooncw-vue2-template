@@ -1,0 +1,24 @@
+@import "../../styles/const.scss";
+
+.header {
+  background-color: $colorPrimary;
+  box-shadow: 0 8px 16px fade-out($colorPrimary, 0.8);
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  position: fixed;
+  z-index: 2;
+
+  .message {
+    color: #fff;
+    font-size: 1rem;
+    padding: 0 $void;
+  }
+}
+
+.container {
+  margin-top: 58px;
+  position: relative;
+  z-index: 1;
+}

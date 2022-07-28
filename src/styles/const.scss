@@ -1,0 +1,51 @@
+// 主题配置
+// 为了实现页面样式的灵活统一，我们抽取了一部分使用频率较高的属性。
+
+// 边距
+$void: 10px;
+$voidSmall: $void / 2;
+$voidLarge: $void * 2;
+
+// 字体字号
+$fontFamily: "Open Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+  Helvetica, Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB",
+  "Microsoft Yahei", sans-serif;
+
+// 全局默认使用 15px 字体（建议设置到 html 元素上，以便后续使用 rem）
+$fontSize: 15px;
+
+// 默认行高
+$lineHeight: 28px;
+
+// 背景色
+$bg: #fafbff;
+$bgf: #fff;
+
+// 颜色
+$colorPrimary: #1890FF;
+$colorPrimaryLight: #5cdbe2;
+$colorSecond: #ba62ef;
+$colorSecondLight: #d18ef9;
+$colorBorder: #e6e9f0;
+$colorBorderLight: #eef1fa;
+
+// 文本颜色
+$color333: #333;
+$color3: #3d3f47;
+$colorText: #3d3f47;
+$colorTextDark: #191b22;
+$colorTextLight: #7d818c;
+$colorTextLightMore: #d4d8e4;
+
+// 情境配色
+// 情境配色分 2 种：
+// 一种颜色较深，适合按钮背景色、情境文本色等；
+// 另一种颜色较浅，适合 tips 背景色、边框色等；
+$colorSitSuccess: #66BB6A;
+$colorSitSuccessLight: #E6FAE7;
+$colorSitDanger: #FF5252;
+$colorSitDangerLight: #FFEDED;
+$colorSitWarning: #F5A227;
+$colorSitWarningLight: #FFF7EB;
+$colorSitInfo: #909399;
+$colorSitInfoLight: #ababad;

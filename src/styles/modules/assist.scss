@@ -1,0 +1,139 @@
+@import "../mixins/margin.scss";
+@import "../mixins/padding.scss";
+@import "../const.scss";
+
+body {
+  // 外边距
+  .margin {
+    @include margin($void);
+
+    &-small {
+      @include margin($voidSmall);
+    }
+
+    &-large {
+      @include margin($voidLarge);
+    }
+
+    &-huge {
+      @include margin($voidLarge * 1.5);
+    }
+  }
+
+  // 内边距
+  .padding {
+    @include padding($void);
+
+    &-small {
+      @include padding($voidSmall);
+    }
+
+    &-large {
+      @include padding($voidLarge);
+    }
+
+    &-huge {
+      @include padding($voidLarge * 1.5);
+    }
+  }
+
+  // 文本色
+  .color {
+    &-red,
+    &-danger {
+      color: #ff4747;
+    }
+
+    &-orange,
+    &-warning {
+      color: #ff9242;
+    }
+
+    &-yellow {
+      color: #ecb601;
+    }
+
+    &-green,
+    &-success {
+      color: #74bb45;
+    }
+
+    &-blue,
+    &-info {
+      color: #09f;
+    }
+
+    &-cyan {
+      color: #11adb3;
+    }
+
+    &-gray {
+      color: #999;
+    }
+
+    &-dark {
+      color: #111;
+    }
+
+    &-white {
+      color: white;
+    }
+
+    // 主题色
+    &-primary {
+      color: $colorPrimaryLight;
+    }
+
+    &-gray-primary {
+      color: $colorTextLight;
+    }
+
+    // 超链接文本
+    &-link {
+      color: $colorPrimary;
+    }
+  }
+
+  // 超链接文本
+  .text-link {
+    color: $colorPrimary;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      color: lighten($colorPrimary, 5);
+    }
+  }
+
+  // 分隔字符
+  .split {
+    color: $colorTextLight;
+    display: inline-block;
+    padding: 0 8px;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  // 同行表单组
+  .inline-inputs {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  // 文本对齐
+  .text-align {
+    &-left {
+      text-align: left;
+    }
+
+    &-center {
+      text-align: center;
+    }
+
+    &-right {
+      text-align: right;
+    }
+  }
+}

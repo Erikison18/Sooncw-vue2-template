@@ -1,0 +1,94 @@
+@import "../const.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  background-color: lighten($colorBorder, 4%);
+  color: $colorText;
+  font-size: 1rem;
+  font-family: $fontFamily;
+  line-height: 1.2rem;
+}
+
+// 布局容器
+.contanier {
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+}
+
+// 文本溢出
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 加载遮罩
+.spin {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+// flex 布局展开
+.expanded {
+  flex: 1;
+}
+
+// 超链接文本
+.links {
+  color: #5175ff;
+
+  &:hover {
+    color: $colorPrimary;
+    text-shadow: 0 1px 3px fade-out($colorPrimaryLight, 0.8);
+  }
+}
+
+// 表单组
+.form-input-group {
+  align-items: center;
+  display: flex;
+}
+
+// 表单提示
+.form-tips {
+  color: $colorTextLight;
+  font-size: 0.8rem;
+  padding: 8px;
+  line-height: 20px;
+}
+
+// 弹窗表单
+.modal-form {
+  // 默认 label-width 为 120
+  padding: 40px 40px 20px;
+  position: relative;
+
+  &-options {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+}
+
+// 弹窗图片查看
+.modal-image {
+  position: relative;
+
+  img {
+    max-width: 100%;
+  }
+}

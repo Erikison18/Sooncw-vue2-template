@@ -1,0 +1,31 @@
+// 内边距生成
+@mixin padding($void) {
+  padding: $void;
+
+  // 单向
+  &-y,
+  &-top {
+    padding-top: $void;
+  }
+
+  &-y,
+  &-bottom {
+    padding-bottom: $void;
+  }
+
+  &-x,
+  &-left {
+    padding-left: $void;
+  }
+
+  &-x,
+  &-right {
+    padding-right: $void;
+  }
+
+  // 无边距
+  &-none {
+    padding: none;
+  }
+
+}

@@ -1,0 +1,31 @@
+// 外边距生成
+@mixin margin($void) {
+  margin: $void;
+
+  // 单向
+  &-y,
+  &-top {
+    margin-top: $void;
+  }
+
+  &-y,
+  &-bottom {
+    margin-bottom: $void;
+  }
+
+  &-x,
+  &-left {
+    margin-left: $void;
+  }
+
+  &-x,
+  &-right {
+    margin-right: $void;
+  }
+
+  // 无边距
+  &-none {
+    margin: none;
+  }
+
+}

@@ -1,0 +1,62 @@
+// flex 布局
+.flex {
+  display: flex;
+
+  &.wrap {
+    flex-wrap: wrap;
+
+    &-reverse {
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  &.main {
+    &-start {
+      justify-content: flex-start;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-space-between {
+      justify-content: space-between;
+    }
+    &-space-around {
+      justify-content: space-around;
+    }
+    &-space-evenly {
+      justify-content: space-evenly;
+    }
+    &-none {
+      justify-content: unset;
+    }
+  }
+
+  &.cros {
+    &-start {
+      align-items: flex-start;
+    }
+    &-center {
+      align-items: center;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+    &-stretch {
+      align-items: stretch;
+    }
+    &-baseline {
+      align-items: baseline;
+    }
+    &-none {
+      align-items: unset;
+    }
+  }
+
+  // 撑满布局
+  .expand {
+    flex: 1;
+  }
+}

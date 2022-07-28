@@ -1,0 +1,95 @@
+@import "../const.scss";
+
+// 扩展 5 列布局
+.el-col-s5 {
+  width: 20%;
+}
+
+// 消息
+.el-message {
+  min-width: unset;
+}
+
+// 弹窗
+.el-dialog {
+  border-radius: $void;;
+
+  &__header {
+    text-align: center;
+  }
+}
+
+.el-message-box {
+  border-radius: $void;;
+  padding: $void;
+}
+
+.el-message-box__btns {
+  padding: 5px 15px 15px;
+}
+.el-tabs__nav-wrap::after {
+  height: 1px;
+}
+.el-tabs__nav-scroll {
+  display: flex;
+  justify-content: center;
+}
+.el-tabs__active-bar {
+  height: 4px;
+}
+.el-tabs__nav {
+  padding-bottom: $void;
+  padding-top: $void;
+}
+
+// 分页
+.el-pagination {
+  color: #898ebb;
+  font-weight: normal;
+}
+
+.el-pager li {
+  border-radius: 3px;
+  margin: 0 4px;
+  min-width: 28px;
+  padding: 0;
+}
+
+.el-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  .el-radio {
+    margin: $void;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+}
+
+.el-textarea__inner:focus,
+.el-input__inner:focus {
+  box-shadow: 0 0 0 3px fade-out($colorPrimary, 0.9);
+}
+
+// 表格排序箭头
+.el-table .caret-wrapper {
+  height: 30px;
+}
+
+.el-table .sort-caret {
+  border-width: 4px;
+}
+
+// 禁用双击选中
+.el-breadcrumb,
+.el-tabs {
+  user-select: none;
+}
+
+// 文本框最大输入字符数
+.el-textarea .el-input__count {
+  font-size: 0.8rem;
+  line-height: 20px;
+}
