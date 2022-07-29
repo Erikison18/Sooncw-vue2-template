@@ -5,8 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:prod": "vue-cli-service serve --mode production",
+    "serve:uat": "vue-cli-service serve --mode uat",
+    "serve:sit": "vue-cli-service serve --mode sit",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint --fix"
+    "build:dev": "vue-cli-service build --mode development",
+    "build:uat": "vue-cli-service build --mode uat",
+    "build:sit": "vue-cli-service build --mode sit",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.21.1",
